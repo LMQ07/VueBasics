@@ -1,11 +1,10 @@
-
 <template>
   <div class="container">
     <div class="imglist">
       <h3>图片列表区</h3>
-      <img src="./assets/01.jpg" alt="" @mouseover="getUrl" @click="setBgc">
-      <img src="./assets/02.jpg" alt="" @mouseover="getUrl" @click="setBgc">
-      <img src="./assets/03.jpg" alt="" @mouseover="getUrl" @click="setBgc">
+      <img src="./assets/01.jpg" alt="" @mouseover="getUrl(1)">
+      <img src="./assets/02.jpg" alt="" @mouseover="getUrl(2)">
+      <img src="./assets/03.jpg" alt="" @mouseover="getUrl(3)">
     </div>
     <div class="show">
       <h3>图片预览区</h3>
@@ -17,21 +16,23 @@
 </template>
 
 <script>
-import img from "./assets/01.jpg"
+import img1 from "./assets/01.jpg"
+import img2 from "./assets/02.jpg"
+import img3 from "./assets/03.jpg"
 export default {
   data() {
     return {
-      imgUrl: img
+      img: {
+        1: img1,
+        2: img2,
+        3: img3
+      },
+      imgUrl: img1
     }
   },
   methods: {
-    getUrl(e) {
-      // 这边的src路径已经经过处理了 所以才可以的
-      console.log(e.target.src);
-      this.imgUrl = e.target.src
-    },
-    setBgc(e) {
-      document.body.style.background = `url(${e.target.src}) no-repeat 0 0/cover`
+    getUrl(val) {
+      this.imgUrl = this.img[val]
     }
   },
 };
