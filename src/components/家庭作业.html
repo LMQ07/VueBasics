@@ -6,5 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <script>
+      // http://www.baidu.com?name=zhangsan&age=18&sex=nan#
+      // 解析出
+      // {name: 'zhangsan',age: 18, sex: 'nan' }
+      let str = 'http://www.baidu.com?name=zhangsan&age=18&sex=nan#';
+      const reg = /\w+=\w+/g;
+      const res = str.match(reg);
+      // console.log(res);
+      const obj = res.reduce((prev, item) => {
+        const [key, value] = item.split('=');
+        prev[key] = value;
+        return prev;
+      }, {});
+      console.log(obj);
+
+      // 封装函数
+      function getObj(str) {
+        const reg = /\w+=\w+/g;
+        const res = str.match(reg);
+        const obj = res.reduce((pre, curr) => {
+          const [key, value] = curr.split('=');
+          pre[key] = value;
+          return pre;
+        }, {});
+        return obj;
+      }
+
+      console.log(getObj(str));
+
+      // res.forEach(item => {
+      //   const temp = item.split('=');
+      //   obj[temp[0]] = temp[1];
+      // });
+      // console.log(obj);
+
+      // const num1 = str.indexOf('?');
+      // const num2 = str.indexOf('#');
+      // console.log(num1);
+      // console.log(num2);
+      // const newStr = str.substring(num1 + 1, num2);
+      // console.log(newStr);
+      // const arr = newStr.split('&');
+      // const newArr = [];
+      // const obj = {};
+      // arr.forEach(item => {
+      //   const temp = item.split('=');
+      //   obj[temp[0]] = temp[1];
+      // });
+      // console.log(obj);
+    </script>
+  </body>
 </html>

@@ -6,5 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <!-- 防抖 -->
+    <!-- 防抖就是前面所有的触发都会被取消，然后最后一次触发会在规定的时候之后再执行 -->
+    <!-- 使用的场景：比如我们根据input框搜索东西的时候 
+      不能说用户在每一次输入的时候input框都发起请求，而是在用户输入完整后再发起请求-->
+    <script>
+      function FD(fun, time) {
+        // 清除前面的定时器 重新开启新的定时器
+        let timeout;
+        return function () {
+          clearTimeout(timeout);
+          timeout = setTimeout(fun, time);
+        };
+      }
+    </script>
+    <!-- 节流 -->
+    <!-- n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效-->
+    <!-- 使用的场景：鼠标不断触发点击，发起请求 我们就会用节流-->
+
+    <script>
+      function JL(fun, time) {
+        let flag = false;
+        return function () {
+          // 如果flag true退出，没有开启 继续向下执行
+          if (flag) return;
+          // 开启节流阀
+          flag = true;
+          // 执行函数
+          fun();
+          // 一定时间后关闭
+          setTimeout(() => {
+            flag = false;
+          }, time);
+        };
+      }
+    </script>
+  </body>
 </html>

@@ -6,5 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <script>
+      let arr = [{ a: 100 }, { a: 20 }, { a: -10 }];
+
+      // const sum = arr.reduce((pre, curr) => {
+      //   console.log(reduce);
+      //   // return pre + curr.a;
+      // }, 0);
+      // console.log(sum); // 110
+      // 第一种
+      let str = 'asdasdasdasdasdasd';
+      let arr1 = str.split('');
+      let obj = {};
+      let arr2 = arr1.reduce((pre, curr) => {
+        if (obj[curr] !== undefined) {
+          obj[curr] += 1;
+        } else {
+          obj[curr] = 1;
+        }
+        return obj;
+      }, 0);
+      console.log(arr2);
+      // 第二种
+      let arr4 = arr1.reduce((pre, curr) => {
+        if (pre.hasOwnProperty(curr)) {
+          pre[curr] += 1;
+        } else {
+          pre[curr] = 1;
+        }
+        return pre;
+      }, {});
+      console.log(arr4);
+    </script>
+  </body>
 </html>
