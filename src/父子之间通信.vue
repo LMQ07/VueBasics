@@ -1,14 +1,20 @@
 <template>
   <div>
     <Myproduct
-      v-for="(item, index) in list"
+      price="50元"
+      title="好吃的口水鸡"
+      msg="开业大酬宾, 全场8折"
+    ></Myproduct>
+    <Myproduct :price="price" :title="title" :msg="msg"></Myproduct>
+    <Myproduct
+      v-for="item in list"
       :key="item.id"
       :price="item.proprice"
       :title="item.proname"
       :msg="item.info"
-      :index="index"
-      v-on:discount="discount"
     ></Myproduct>
+    <Myproduct v-for="item in list" :key="item.id" :obj="item"></Myproduct>
+    <!-- //Myproduct1 -->
   </div>
 </template>
 
@@ -44,11 +50,6 @@ export default {
         },
       ],
     };
-  },
-  methods: {
-    discount(val) {
-      this.list[val].proprice = (this.list[val].proprice - 1).toFixed(1);
-    },
   },
 };
 </script>
