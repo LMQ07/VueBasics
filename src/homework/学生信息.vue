@@ -75,6 +75,7 @@ export default {
       sex: "男",
       name: "",
       age: "",
+      flag: false,
     };
   },
   methods: {
@@ -90,13 +91,14 @@ export default {
         alert("信息不能为空哦~ 请记得填写完毕");
       } else {
         //  判断一下人名是否存在
-        if (this.msg.filter((item) => item.name == this.name)) {
+        if (this.flag) {
           const index = this.msg.findIndex((item) => (item.name = this.name));
           this.msg[index].name = this.name;
           this.msg[index].age = this.age;
           this.msg[index].sex = this.sex;
           this.name = "";
           this.age = "";
+          this.flag = false;
         } else {
           this.msg.push({
             name: this.name,
@@ -115,6 +117,7 @@ export default {
       this.name = obj.name;
       this.age = obj.age;
       this.sex = obj.sex;
+      this.flag = true;
     },
   },
 };
