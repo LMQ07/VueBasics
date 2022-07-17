@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function cloneThing(obj) {
+        if (obj instanceof Array) {
+          var clone = [];
+        } else {
+          var clone = {};
+        }
+        for (let i in obj) {
+          if (typeof obj[i] == 'Object' && obj[i] != null) {
+            clone[i] = cloneThing[obj[i]];
+          } else {
+            clone[i] = obj[i];
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
