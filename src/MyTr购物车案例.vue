@@ -74,7 +74,10 @@ export default {
   computed: {
     sum() {
       return this.goodList.reduce((pre, next) => {
-        return (pre += next.num * next.price);
+        if (next.checked) {
+          pre += next.num * next.price;
+        }
+        return pre;
       }, 0);
     },
   },
