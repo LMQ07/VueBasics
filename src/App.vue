@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th>
-            <input type="checkbox" v-model="isAll" @change="AllCheck" />
+            <input type="checkbox" v-model="isAll" />
             <span>全选</span>
           </th>
           <th>名称</th>
@@ -70,7 +70,7 @@ export default {
           checked: false,
         },
       ],
-      isAll: false,
+      // isAll: false,
     };
   },
   components: {
@@ -85,14 +85,26 @@ export default {
         return pre;
       }, 0);
     },
+    isAll: {
+      set(val) {
+        this.goodList.forEach((item) => {
+          item.checked = val;
+        });
+      },
+      get() {
+        return this.goodList.every((item) => {
+          item.checked;
+        });
+      },
+    },
   },
   methods: {
     // 全选影响单选
-    AllCheck() {
-      this.goodList.forEach((item) => {
-        item.checked = this.isAll;
-      });
-    },
+    // AllCheck() {
+    //   this.goodList.forEach((item) => {
+    //     item.checked = this.isAll;
+    //   });
+    // },
     // 单选影响全选
     checkAll(newList, index) {
       this.goodList[index] = newList;
