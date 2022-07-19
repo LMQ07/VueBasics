@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input ref="myInp" type="text" placeholder="这是一个输入框" />
-    <button>点击我进行搜索</button>
+    <input ref="myInp" type="text" placeholder="这是一个输入框" v-if="isShow" />
+    <button @click="search">点击我进行搜索</button>
   </div>
 </template>
 
@@ -16,7 +16,14 @@ export default {
       isShow: false,
     };
   },
-  methods: {},
+  methods: {
+    search() {
+      this.isShow = true;
+      this.$nextTick(() => {
+        this.$refs.myInp.focus();
+      });
+    },
+  },
 };
 </script>
 

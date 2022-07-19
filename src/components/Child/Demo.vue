@@ -15,6 +15,7 @@ export default {
   methods: {
     fn() {
       console.log("demo组件内的方法被调用了");
+      return 1;
     },
   },
 };
