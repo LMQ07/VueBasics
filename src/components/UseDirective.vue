@@ -5,7 +5,7 @@
     <button @click="colorStr = 'red'">click</button>
   </div>
 </template>
-1
+
 <script>
 // 自定义指令的使用
 // 1.注册
