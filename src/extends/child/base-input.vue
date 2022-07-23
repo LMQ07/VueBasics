@@ -3,10 +3,15 @@
     <label>
       姓名:
       <!-- <h1>{{ value }}</h1> -->
-      <input
+      <!-- <input
         type="text"
         :value="value"
         @input="$emit('input', $event.target.value)"
+      /> -->
+      <input
+        type="text"
+        :value="value"
+        @input="$emit('update:value', $event.target.value)"
       />
     </label>
   </div>
@@ -23,6 +28,10 @@ export default {
     value: String,
   },
   mounted() {},
-  methods: {},
+  methods: {
+    fn(val) {
+      this.value = val;
+    },
+  },
 };
 </script>
